@@ -1,0 +1,57 @@
+[Job]
+description='configTest4cseqModule'
+assembly_id='mm10'
+
+[Options]
+#merge_strands=1 !! only define if no url_wig provided in [Groups]. Can be set to 0 otherwise
+primersfile='/working/Demultiplexing_file_test_adapted.fa'
+
+[Global variables]
+# most of them are now in the minilims.
+# variables defined here are overwritting the ones defined during the creation of the minilims (see init_bein_minilims.py)
+# e.g.
+#c4_url='/mnt/BBCF-raw/4cLibraries'
+
+[Groups]
+[[1]]
+name='test1'
+library_file_type_id=''
+library_id=''
+library_file_url='/data/4cLibraries/mm10/library_mm10_Nla_Dpn_30bps_segmentInfos.bed.gz' #set the path the the lib
+library_param_file=''
+window_size=11
+run_domainogram=False
+before_profile_correction=False
+[[2]]
+name='test2'
+library_file_type_id=''
+library_id=''
+library_file_url='/data/4cLibraries/mm10/library_mm10_Nla_Dpn_30bps_segmentInfos.bed.gz' #set the path the the lib
+library_param_file=''
+window_size=11
+run_domainogram=False
+before_profile_correction=False
+[[3]]
+name='test3'
+library_file_type_id=''
+library_id=''
+library_file_url='/data/4cLibraries/mm10/library_mm10_Nla_Dpn_30bps_segmentInfos.bed.gz' #set the path the the lib
+library_param_file=''
+window_size=11
+run_domainogram=False
+before_profile_correction=False
+
+
+[Runs]
+[[1]]
+url='/working/res_files_mapping_mm10/test1_filtered.bam' # mandatory: path to bam file
+url_wig='/working/res_files_mapping_mm10/test1_merged.sql' # optional: path to density file. If not provided will be generated 
+group_id=1
+[[2]]
+url='/working/res_files_mapping_mm10/test2_filtered.bam' # mandatory: path to bam file
+url_wig='/working/res_files_mapping_mm10/test2_merged.sql' # optional: path to density file. If not provided will be generated 
+group_id=2
+[[3]]
+url='/working/res_files_mapping_mm10/test3_filtered.bam' # mandatory: path to bam file
+url_wig='/working/res_files_mapping_mm10/test3_merged.sql' # optional: path to density file. If not provided will be generated 
+group_id=3

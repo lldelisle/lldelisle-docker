@@ -1,0 +1,39 @@
+[Job]
+description='configTestMapseqModule'
+assembly_id='mm10'
+
+[Options]
+input_type=0 #align on the genome. Set to 1 for exonome and 2 to transcriptome
+compute_densities=True
+merge_strands=0 
+discard_pcr_duplicates=False
+create_gdv_project=False #always leave it to False
+
+[Global variables]
+# most of them are now in the minilims.
+# variables defined here are overwritting the ones defined during the creation of the minilims (see init_bein_minilims.py)
+# e.g.
+#bwt_root='/mnt/BBCF-raw/genrep'
+
+
+[Groups]
+[[1]]
+name='test1'
+control=False
+[[2]]
+name='test2'
+control=False
+[[3]]
+name='test3'
+control=False
+
+[Runs]
+[[1]]
+url='/working/res_files/test_10k_Hoxd11_Bc104_filtered.fastq'
+group_id=1
+[[2]]
+url='/working/res_files/test_10k_Hoxd11_Bc14_filtered.fastq'
+group_id=2
+[[3]]
+url='/working/res_files/test_10k_Hoxd11_Bc34_filtered.fastq'
+group_id=3

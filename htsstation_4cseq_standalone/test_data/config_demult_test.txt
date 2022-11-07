@@ -1,0 +1,14 @@
+[Job]
+description='test_10k' #Put here a name which will be unique
+assembly_id='mm10' #Put here the name of your assembly (if mutant, put the name of your mutant genome)
+
+[Runs]
+[[1]]
+url='/working/test_10k.fastq.gz'
+group_id=1
+
+[Groups]
+[[1]]
+name='test_10k'
+paramsfile='/working/Parameter_file_test.txt'
+primersfile='/working/Demultiplexing_file_test.fa'
