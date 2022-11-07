@@ -57,6 +57,8 @@ RUN mkdir -p /usr/src/ \
     && curl -SL https://sourceforge.net/projects/samtools/files/samtools/0.1.19/samtools-0.1.19.tar.bz2 \
     | tar -xjC /usr/src/ \
     && make -C /usr/src/samtools-0.1.19 \
+    && chmod -R a+r /usr/src/samtools-0.1.19 \
+    && chmod a+x /usr/src/samtools-0.1.19 \
     && ln -snf /usr/src/samtools-0.1.19 /usr/include/samtools
 RUN curl -SL https://archives.fedoraproject.org/pub/archive/epel/7/x86_64/Packages/s/samtools-libs-0.1.19-7.el7.x86_64.rpm \
     | rpm2cpio | cpio -idmv \
