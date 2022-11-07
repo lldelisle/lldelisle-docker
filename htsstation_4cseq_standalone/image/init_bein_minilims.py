@@ -4,11 +4,12 @@ from bein import *
 from bein.util import *
 import sys, getopt, os
 
-opts = getopt.getopt(sys.argv[1:],"d:m:",[])[0]
+opts = getopt.getopt(sys.argv[1:],"d:m:r:",[])[0]
 limspath = ([x[1] for x in opts if x[0]=='-d']+["/data/epfl/bbcf/htsstation/data/"])[0]
 ml = ["mapseq","demultiplexing","chipseq","rnaseq","4cseq","snp","microbiome","dnaseseq"]
 module_list = [x[1] for x in opts if x[0]=='-m' and x[1] in ml] or ml
 base_url = 'http://htsstation.epfl.ch'
+reference_path = ([x[1] for x in opts if x[0]=='-r'] + ['/data'])[0]
 
 def do_it(name, gl_dict):
     lims = os.path.join(limspath,"%s_minilims" %name)
@@ -38,9 +39,9 @@ gl_dict = { 'genrep_url': '',
             'email': {'sender': 'webmaster.bbcf@epfl.ch',
                       'smtp': 'localhost'},
             'script_path': '/usr/src/bbcfutils/R',
-            'default_root': '/data/genrep',
-            'bwt_root': '/data/genrep',
-            'c4_url':'/data/4cLibraries',
+            'default_root': reference_path + '/genrep',
+            'bwt_root': reference_path + '/genrep',
+            'c4_url': reference_path + '/4cLibraries',
             'bash_script_path': '/usr/src/bbcfutils/bash_scripts' }
 
 
