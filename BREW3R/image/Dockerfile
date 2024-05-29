@@ -1,5 +1,5 @@
 FROM ubuntu
-LABEL org.opencontainers.image.created="2024-05-21" \
+LABEL org.opencontainers.image.created="2024-05-28" \
     org.opencontainers.image.authors="Lucille Delisle" \
     org.opencontainers.image.description="Container with all dependencies to run BREW3R" \
     org.opencontainers.image.title="BREW3R" \
@@ -24,4 +24,7 @@ libxml2-dev
 RUN apt-get install -y r-base && rm -rf /var/lib/apt/lists/*
 # Install the BREW3R.r package
 RUN R -e 'if (!require("BiocManager", quietly = TRUE)){install.packages("BiocManager")};BiocManager::install("BREW3R.r")'
-
+# Install the rtracklayer package needed to import gtf
+RUN R -e 'BiocManager::install("rtracklayer")'
+# Install the getopt package
+RUN R -e 'install.packages("getopt")'
