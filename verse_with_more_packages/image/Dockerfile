@@ -16,3 +16,22 @@ RUN R -e 'install.packages(c("Seurat", "BiocManager"))'
 RUN R -e 'BiocManager::install(c("rtracklayer", "biovizBase", "Rsamtools", "BSgenome", "ggplot2", "stringr", "glmGamPoi", "TFBSTools", "motifmatchr", "JASPAR2022", "chromVAR", "Signac"))'
 # Install usefulLDfunctions
 RUN R -e 'devtools::install_github("lldelisle/usefulLDfunctions")'
+# Install libhdf5-dev
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    libhdf5-dev \
+    patch \
+    libboost-all-dev \
+    && rm -rf /var/lib/apt/lists/*
+# Install packages for velocyto
+RUN R -e 'BiocManager::install("pcaMethods");remotes::install_github("lldelisle/velocyto.R", ref = "comment_rf_warning", upgrade = "never")'
+# Install packages to deal with loom/seurat
+RUN R -e 'remotes::install_github("satijalab/seurat-wrappers", upgrade = "never");remotes::install_github("cellgeni/sceasy", upgrade = "never")'
+# Install python anndata and reticulate
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install anndata
+RUN R -e 'install.packages("reticulate")'

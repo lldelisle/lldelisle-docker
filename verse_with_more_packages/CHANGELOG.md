@@ -10,4 +10,19 @@ ggplot2 3.5.1
 
 # [4.4.1_1] 2024-10-16
 
+On top:
 Add usefulLDfunctions 0.1.6
+
+# [4.4.1_2] 2024-10-16
+
+On top:
+Install libhdf5-dev, patch and libboost-all-dev
+Install velocyto.R version 0.6 but from lldelisle/velocyto.R branch comment_rf_warning
+Install SeuratWrappers version 0.3.5
+Install sceasy version 0.0.7
+
+Install python 3.10.12 and pip
+Install anndata version 0.10.9
+h5py 3.12.1
+numpy 2.1.2
+scipy 1.14.1
