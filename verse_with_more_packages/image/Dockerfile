@@ -35,3 +35,5 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 RUN pip install anndata
 RUN R -e 'install.packages("reticulate")'
+# Install scvelo
+RUN pip install scvelo
