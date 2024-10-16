@@ -39,3 +39,5 @@ RUN R -e 'install.packages("reticulate")'
 RUN pip install scvelo
 # Downgrade numpy to <2 to be compatible with scvelo
 RUN pip install 'numpy<2'
+# Downgrade scipy to <1.14.0 to be compatible with scvelo
+RUN pip install 'scipy<1.14.0'

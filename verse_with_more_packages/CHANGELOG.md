@@ -39,5 +39,8 @@ scanpy 1.10.3
 
 downgrade numpy to 2.0.2
 
-# [4.4.1_4] 2024-10-16
+# [4.4.1_4] 2024-10-16 - DO NOT USE
 downgrade numpy to 1.26.4
+
+# [4.4.1_5] 2024-10-17
+downgrade scipy to 1.13.1
