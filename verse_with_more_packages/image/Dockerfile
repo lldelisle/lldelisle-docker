@@ -14,3 +14,5 @@ RUN apt-get update \
 RUN R -e 'install.packages(c("Seurat", "BiocManager"))'
 # Install other packages
 RUN R -e 'BiocManager::install(c("rtracklayer", "biovizBase", "Rsamtools", "BSgenome", "ggplot2", "stringr", "glmGamPoi", "TFBSTools", "motifmatchr", "JASPAR2022", "chromVAR", "Signac"))'
+# Install usefulLDfunctions
+RUN R -e 'devtools::install_github("lldelisle/usefulLDfunctions")'

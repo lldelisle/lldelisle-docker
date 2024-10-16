@@ -8,3 +8,6 @@ Rsamtools 2.20.0
 chromVAR 1.20.0
 ggplot2 3.5.1
 
+# [4.4.1_1] 2024-10-16
+
+Add usefulLDfunctions 0.1.6
