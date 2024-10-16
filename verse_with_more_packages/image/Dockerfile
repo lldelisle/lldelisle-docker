@@ -37,3 +37,5 @@ RUN pip install anndata
 RUN R -e 'install.packages("reticulate")'
 # Install scvelo
 RUN pip install scvelo
+# Downgrade numpy to <2 to be compatible with scvelo
+RUN pip install 'numpy<2'

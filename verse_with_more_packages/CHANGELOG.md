@@ -27,7 +27,7 @@ h5py 3.12.1
 numpy 2.1.2
 scipy 1.14.1
 
-# [4.4.1_3] 2024-10-16
+# [4.4.1_3] 2024-10-16 - DO NOT USE
 
 On top:
 Install scvelo version 0.3.2
@@ -38,3 +38,6 @@ umap_learn 0.5.6
 scanpy 1.10.3
 
 downgrade numpy to 2.0.2
+
+# [4.4.1_4] 2024-10-16
+downgrade numpy to 1.26.4
