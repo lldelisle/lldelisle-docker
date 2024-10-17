@@ -44,3 +44,8 @@ downgrade numpy to 1.26.4
 
 # [4.4.1_5] 2024-10-17
 downgrade scipy to 1.13.1
+
+# [4.4.1_6] 2024-10-17
+install scCustomize 2.1.2
+install ggpubr 0.6.0
+install presto 1.0.0

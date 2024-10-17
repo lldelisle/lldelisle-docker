@@ -41,3 +41,7 @@ RUN pip install scvelo
 RUN pip install 'numpy<2'
 # Downgrade scipy to <1.14.0 to be compatible with scvelo
 RUN pip install 'scipy<1.14.0'
+# Install scCustomize and ggpubr
+RUN R -e 'install.packages(c("scCustomize", "ggpubr"))'
+# Install presto
+RUN R -e 'remotes::install_github("immunogenomics/presto", upgrade = "never")'
