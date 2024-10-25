@@ -45,3 +45,7 @@ RUN pip install 'scipy<1.14.0'
 RUN R -e 'install.packages(c("scCustomize", "ggpubr"))'
 # Install presto
 RUN R -e 'remotes::install_github("immunogenomics/presto", upgrade = "never")'
+# Install ggseqlogo and demuxmix
+RUN R -e 'install.packages("ggseqlogo");BiocManager::install("demuxmix")'
+# Install seurat-disk
+RUN R -e 'remotes::install_github("mojaveazure/seurat-disk", upgrade = "never")'
