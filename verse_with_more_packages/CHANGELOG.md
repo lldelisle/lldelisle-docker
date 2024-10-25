@@ -50,7 +50,7 @@ install scCustomize 2.1.2
 install ggpubr 0.6.0
 install presto 1.0.0
 
-# [4.4.1_7] 2024-10-17
+# [4.4.1_7] 2024-10-25
 install ggseqlogo 0.2
 install demuxmix 1.6.0
 install SeuratDisk 0.0.0.9021
