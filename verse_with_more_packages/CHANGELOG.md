@@ -1,3 +1,30 @@
+# [4.3.0_0] 2024-10-28
+
+Based on rocker/verse:4.3.0.
+
+This is a copy of what is on the UPDUB rstudio server but it is a mix of things, I would not use it except to be able to reproduce an analysis.
+
+Most of bioconductor packages are from release 3.17 except:
+
+- S4Arrays 1.2.1
+- MatrixGenerics 1.14.0
+- SparseArray 1.2.4
+- DelayedArray 0.28.0
+- sparseMatrixStats 1.14.0
+- DelayedMatrixStats 1.24.0
+- beachmat 2.18.1
+- BiocNeighbors 1.20.2
+- BiocSingular 1.18.0
+- Rhdf5lib 1.24.2
+- rhdf5filters 1.14.1
+- rhdf5 2.46.1
+- HDF5Array 1.30.1
+- ResidualMatrix 1.12.0
+- scuttle 1.12.0
+- batchelor 1.18.1
+- limma 3.58.1
+- DWLS 0.1.0
+
 # [4.4.1_0] 2024-10-15
 
 Based on rocker/verse:4.4.1
