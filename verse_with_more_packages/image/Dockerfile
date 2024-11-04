@@ -1,13 +1,12 @@
-FROM rocker/verse:4.3.0
-LABEL org.opencontainers.image.created="2024-10-28" \
+FROM rocker/verse:4.4.2
+LABEL org.opencontainers.image.created="2024-11-04" \
     org.opencontainers.image.authors="Lucille Delisle" \
     org.opencontainers.image.description="Docker image based on rocker:verse with more packages" \
     org.opencontainers.image.title="verse_with_more_packages" \
     org.opencontainers.image.url="https://github.com/lldelisle/lldelisle-docker/blob/main/verse_with_more_packages" \
     org.opencontainers.image.source="https://github.com/lldelisle/lldelisle-docker/blob/main/verse_with_more_packages/image/Dockerfile"
-# Copy the file with the list of packages and versions
-COPY helpers/packages.to.install_4.3.0_0.txt /tmp/
-COPY helpers/install_packages_4.3.0_0.R /tmp/
+# Copy the file with the list of packages
+COPY helpers/packages.to.install_4.4.2_0.txt /tmp/
 # Add the libhdf5-dev and patch for hdf5r, libudunits2-dev for units for sf, libgdal-dev for sf,  libgsl-dev library needed for DirichletMultinomial, libboost-filesystem-dev libboost-system-dev for velocyto.R
 # Add python for scvelo
 RUN apt-get update \
@@ -19,15 +18,14 @@ RUN apt-get update \
     libgsl-dev \
     libboost-filesystem-dev libboost-system-dev \
     python3 \
+    python3-venv \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
-# Install R packages
-# The .Renviron contains the GITHUB_PAT
-RUN --mount=type=secret,id=renv,target=/root/.Renviron \
-    Rscript /tmp/install_packages_4.3.0_0.R
-# Some dependencies may need a second run
-# The .Renviron contains the GITHUB_PAT
-RUN --mount=type=secret,id=renv,target=/root/.Renviron \
-    Rscript /tmp/install_packages_4.3.0_0.R
 # Install python scvelo
-RUN pip install anndata scvelo 'numpy<2' 'scipy<1.14.0'
+RUN python3 -m venv /root/venv; . /root/venv/bin/activate; pip install anndata scvelo 'numpy<2' 'scipy<1.14.0'
+# Install R packages from CRAN and Bioconductor
+RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.2_0.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+# Install other packages
+# The .Renviron contains the GITHUB_PAT
+RUN --mount=type=secret,id=renv,target=/root/.Renviron \
+    R -e 'remotes::install_github("satijalab/seurat-wrappers", upgrade = "never", ref = "8d46d6c47c089e193fe5c02a8c23970715918aa9");remotes::install_github("cellgeni/sceasy", ref = "c1c0bf973b0b3b67e013c01bf583d1fcc4c9f8cc", upgrade = "never");remotes::install_github("lldelisle/velocyto.R", ref = "comment_rf_warning", upgrade = "never");remotes::install_github("immunogenomics/presto", upgrade = "never", ref = "7636b3d0465c468c35853f82f1717d3a64b3c8f6");remotes::install_github("lldelisle/usefulLDfunctions", upgrade = "never", ref = "v0.1.6")'
