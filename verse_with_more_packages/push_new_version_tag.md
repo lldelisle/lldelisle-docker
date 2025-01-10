@@ -1,34 +1,30 @@
-# How to push a new version or a new tag
+# How to push a new tag with a new R version or an existing R version
 
 ## How to get a new tag for an existing image
 
-1. Find the commit corresponding to the last version of the image
-1. Restore the Dockerfile to this version with
-
-```bash
-git restore -s <commit_hash> verse_with_more_packages/image/Dockerfile
-```
-
-1. Modify the [Dockerfile](./image/Dockerfile) by adding lines on the bottom.
-1. Build it
+1. Checkout to the good branch (verse_with_more_packages_<r_version>)
+1. Modify the [Dockerfile](./image/Dockerfile):
+    1. by adding lines on the bottom with the specific packages for version 4.4.1.
+    1. by installing CRAN/Bioconductor packages from a file in [this directory](./image/helpers/) for version 4.4.2 and above and by installing github packages by adding them in the Dockerfile.
+1. Build it using the GITHUB_PAT
 
 ```bash
 cd verse_with_more_packages/image/
-docker build -t verse_with_more_packages_<version>:<tag> .
+docker build --secret id=renv,src=/home/ldelisle/.Renviron -t verse_with_more_packages:<r_version>_<image_version> .
 ```
 If it is recreating the first layers instead of using the cache, then you need to change the docker file to start from the previous version see [this example](https://github.com/lldelisle/lldelisle-docker/blob/d542cdc/verse_with_more_packages/image/Dockerfile).
 
 1. Tag it for dockerhub and push
 
 ```bash
-docker image tag verse_with_more_packages_<version>:<tag> lldelisle/verse_with_more_packages_<version>:<tag>
+docker image tag verse_with_more_packages:<r_version>_<image_version> lldelisle/verse_with_more_packages:<r_version>_<image_version>
 ```
 
 ## How to create a version because there is a new version of R
 
 1. Check that there is a dockerhub image corresponding to the new R version [here](https://hub.docker.com/r/rocker/verse/tags).
 
-1. Create a new file in [this directory](./image/helpers/) maybe copying the last `packages.to.install_<version>.txt` and adding new packages (only from CRAN and Bioconductor) potentially.
+1. Create a new file in [this directory](./image/helpers/) maybe copying the last `packages.to.install_*.txt` to `packages.to.install_<r_version>_0.txt` and adding new packages (only from CRAN and Bioconductor) potentially.
 
 1. Restore the Docker file to the last version with the `_0`, for example:
 
@@ -48,5 +44,5 @@ docker build --secret id=renv,src=/home/ldelisle/.Renviron -t verse_with_more_pa
 1. Tag it for dockerhub and push
 
 ```bash
-docker image tag verse_with_more_packages_<version>:<tag> lldelisle/verse_with_more_packages_<version>:<tag>
+docker image tag verse_with_more_packages:<r_version>_<image_version> lldelisle/verse_with_more_packages:<r_version>_<image_version>
 ```
