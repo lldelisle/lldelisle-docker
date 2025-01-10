@@ -90,6 +90,9 @@ And
 - install demuxmix 1.6.0
 - install SeuratDisk 0.0.0.9021
 
+# [4.4.1_8] 2025-01-10
+- install pheatmap 1.0.12
+
 # [4.4.2_0] 2024-11-05
 
 Based on rocker/verse:4.4.2
