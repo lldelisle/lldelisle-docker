@@ -2,22 +2,36 @@
 
 ## How to get a new tag for an existing image
 
-1. Checkout to the good branch (verse_with_more_packages_<r_version>)
-1. Modify the [Dockerfile](./image/Dockerfile):
-    1. by adding lines on the bottom with the specific packages for version 4.4.1.
-    1. by installing CRAN/Bioconductor packages from a file in [this directory](./image/helpers/) for version 4.4.2 and above and by installing github packages by adding them in the Dockerfile.
+1. Modify the good docker file, for example [Dockerfile_4.4.2](./image/Dockerfile_4.4.2):
+    1. For version 4.4.1: by adding lines on the bottom with the specific packages.
+    1. For other verions:
+        - for the CRAN/Bioconductor packages, create a file with a name like `packages.to.install_4.4.2_1.txt` containing one package name per line and add to the Dockerfile:
+        ```
+        COPY helpers/packages.to.install_4.4.2_1.txt /tmp/
+        RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.2_1.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+        ```
+        - for the github packages, add to the Dockerfile something like:
+        ```
+        # The .Renviron contains the GITHUB_PAT
+        RUN --mount=type=secret,id=renv,target=/root/.Renviron \
+            R -e 'remotes::install_github("satijalab/seurat-wrappers", upgrade = "never", ref = "8d46d6c47c089e193fe5c02a8c23970715918aa9")'
+        ```
+
+        
+         for version 4.4.2 and above and by installing github packages by adding them in the Dockerfile.
+
 1. Build it using the GITHUB_PAT
 
 ```bash
 cd verse_with_more_packages/image/
-docker build --secret id=renv,src=/home/ldelisle/.Renviron -t verse_with_more_packages:<r_version>_<image_version> .
+docker build --secret id=renv,src=/home/delislel/.Renviron -f Dockerfile_4.4.2 -t verse_with_more_packages:4.4.2_1
 ```
-If it is recreating the first layers instead of using the cache, then you need to change the docker file to start from the previous version see [this example](https://github.com/lldelisle/lldelisle-docker/blob/d542cdc/verse_with_more_packages/image/Dockerfile).
+If it is recreating the first layers instead of using the cache, then you need to change the docker file to start from the previous version like [this example](./image/Dockerfile_4.4.1_8).
 
 1. Tag it for dockerhub and push
 
 ```bash
-docker image tag verse_with_more_packages:<r_version>_<image_version> lldelisle/verse_with_more_packages:<r_version>_<image_version>
+docker image tag verse_with_more_packages:<r_version>_<image_version> lldelisle/verse_with_more_packages:<r_version>_<image_version> &> <r_version>_<image_version>.log
 ```
 
 ## How to create a version because there is a new version of R
@@ -26,19 +40,15 @@ docker image tag verse_with_more_packages:<r_version>_<image_version> lldelisle/
 
 1. Create a new file in [this directory](./image/helpers/) maybe copying the last `packages.to.install_*.txt` to `packages.to.install_<r_version>_0.txt` and adding new packages (only from CRAN and Bioconductor) potentially.
 
-1. Restore the Docker file to the last version with the `_0`, for example:
+1. Copy the last Dockerfile that started from verse and name it with the R version.
 
-```bash
-git restore -s f9e438a3cc155229b6e6a494292634d08bf20c30 verse_with_more_packages/image/Dockerfile
-```
-
-1. Modify the [Dockerfile](./image/Dockerfile) to fit the new version and add the new R packages from gitHub etc...
+1. Modify the Dockerfile in [image](./image/) to fit the new version and add the new R packages from gitHub etc...
 
 1. Build it using the GITHUB_PAT
 
 ```bash
 cd verse_with_more_packages/image/
-docker build --secret id=renv,src=/home/ldelisle/.Renviron -t verse_with_more_packages_<version>:<tag> . &> <version>_<tag>.log
+docker build --secret id=renv,src=/home/ldelisle/.Renviron -f Dockerfile_ -t verse_with_more_packages:<r_version>_<image_version> &> <r_version>_<image_version>.log
 ```
 
 1. Tag it for dockerhub and push
