@@ -11,6 +11,8 @@ cowplot
 demuxmix
 DESeq2
 DWLS
+edgeR
+eulerr
 GenomicRanges
 ggforce
 ggh4x
@@ -57,3 +59,4 @@ SingleCellExperiment
 snakecase
 stringr
 TFBSTools
+UpSetR
