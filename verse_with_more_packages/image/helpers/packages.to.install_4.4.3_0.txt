@@ -1,10 +1,12 @@
 AUCell
+batchelor
 biomaRt
 biovizBase
 BSgenome
 BSgenome.Mmusculus.UCSC.mm10
 BSgenome.Mmusculus.UCSC.mm39
 chromVAR
+clustree
 ComplexHeatmap
 corrplot
 cowplot
@@ -18,6 +20,7 @@ ggforce
 ggh4x
 ggprism
 ggpubr
+ggraph
 ggrastr
 ggrepel
 ggridges
@@ -33,6 +36,7 @@ jpeg
 KEGGREST
 limma
 motifmatchr
+Nebulosa
 openxlsx
 patchwork
 pcaMethods
@@ -58,5 +62,6 @@ Signac
 SingleCellExperiment
 snakecase
 stringr
+terra
 TFBSTools
 UpSetR
