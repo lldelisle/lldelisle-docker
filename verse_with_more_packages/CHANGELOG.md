@@ -1,3 +1,34 @@
+# [4.4.3_0] 2025-03-24
+
+Based on rocker/verse:4.4.3
+
+scvelo (version 0.3.3) has been installed in a virtual environment available at `/root/venv/`.
+
+All R packages listed in [this file](./image/helpers/packages.to.install_4.4.3_0.txt) have been installed. Here are the version of some packages:
+
+- biomaRt 2.62.1
+- chromVAR 1.28.0
+- ComplexHeatmap 2.22.0
+- demuxmix 1.8.0
+- DESeq2 1.46.0
+- GenomicRanges 1.58.0
+- ggh4x 0.3.0
+- ggplot2 3.5.1
+- ggpubr 0.6.0
+- ggseqlogo 0.2
+- goseq 1.58.0
+- pheatmap 1.0.12
+- presto 1.0.0
+- Rsamtools 2.22.0
+- rtracklayer 1.66.0
+- scCustomize 3.0.1
+- Seurat 5.2.1
+- Signac 1.14.0
+- TFBSTools 1.44.0
+- usefulLDfunctions 0.1.6
+
+
+
 # [4.4.2_0] 2024-11-05
 
 Based on rocker/verse:4.4.2
