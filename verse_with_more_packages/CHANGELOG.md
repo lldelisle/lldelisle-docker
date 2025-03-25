@@ -1,3 +1,7 @@
+# [4.4.3_1] 2025-03-25
+
+Add seqinr, topGO
+
 # [4.4.3_0] 2025-03-24
 
 Based on rocker/verse:4.4.3
