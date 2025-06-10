@@ -1,0 +1,187 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile_4.4.3
+#1 transferring dockerfile: 3.17kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/rocker/verse:4.4.3
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [stage-0 1/9] FROM docker.io/rocker/verse:4.4.3
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 946B done
+#5 DONE 0.0s
+
+#6 [stage-0 2/9] COPY helpers/packages.to.install_4.4.3_0.txt /tmp/
+#6 CACHED
+
+#7 [stage-0 3/9] RUN apt-get update     && apt-get install -y --no-install-recommends     libhdf5-dev     libudunits2-dev     patch     libgdal-dev     libgsl-dev     libboost-filesystem-dev libboost-system-dev     python3     python3-venv     python3-pip     && rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [stage-0 5/9] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_0.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#8 CACHED
+
+#9 [stage-0 4/9] RUN python3 -m venv /root/venv; . /root/venv/bin/activate; pip install anndata scvelo 'numpy<2' 'scipy<1.14.0'
+#9 CACHED
+
+#10 [stage-0 6/9] RUN --mount=type=secret,id=renv,target=/root/.Renviron     R -e 'remotes::install_github("satijalab/seurat-wrappers", upgrade = "never", ref = "8d46d6c47c089e193fe5c02a8c23970715918aa9");remotes::install_github("cellgeni/sceasy", ref = "c1c0bf973b0b3b67e013c01bf583d1fcc4c9f8cc", upgrade = "never");remotes::install_github("lldelisle/velocyto.R", ref = "comment_rf_warning", upgrade = "never");remotes::install_github("immunogenomics/presto", upgrade = "never", ref = "7636b3d0465c468c35853f82f1717d3a64b3c8f6");remotes::install_github("lldelisle/usefulLDfunctions", upgrade = "never", ref = "v0.1.6");remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "b86c53ab8940602f0aeb8cd27315482a3efb83f0");remotes::install_github("mojaveazure/seurat-disk", upgrade = "never", ref = "877d4e18ab38c686f5db54f8cd290274ccdbe295");remotes::install_github("cole-trapnell-lab/monocle3", upgrade = "never", ref = "98402ed0c10cac020524bebbb9300614a799f6d1")'
+#10 CACHED
+
+#11 [stage-0 7/9] COPY helpers/packages.to.install_4.4.3_1.txt /tmp/
+#11 DONE 0.0s
+
+#12 [stage-0 8/9] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_1.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#12 0.285 
+#12 0.285 R version 4.4.3 (2025-02-28) -- "Trophy Case"
+#12 0.285 Copyright (C) 2025 The R Foundation for Statistical Computing
+#12 0.285 Platform: x86_64-pc-linux-gnu
+#12 0.285 
+#12 0.285 R is free software and comes with ABSOLUTELY NO WARRANTY.
+#12 0.285 You are welcome to redistribute it under certain conditions.
+#12 0.285 Type 'license()' or 'licence()' for distribution details.
+#12 0.285 
+#12 0.285   Natural language support but running in an English locale
+#12 0.285 
+#12 0.285 R is a collaborative project with many contributors.
+#12 0.285 Type 'contributors()' for more information and
+#12 0.285 'citation()' on how to cite R or R packages in publications.
+#12 0.285 
+#12 0.285 Type 'demo()' for some demos, 'help()' for on-line help, or
+#12 0.285 'help.start()' for an HTML browser interface to help.
+#12 0.285 Type 'q()' to quit R.
+#12 0.285 
+#12 0.371 > install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_1.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)
+#12 0.372 Installing package into ‘/usr/local/lib/R/site-library’
+#12 0.372 (as ‘lib’ is unspecified)
+#12 3.045 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/BiocManager_1.30.26.tar.gz'
+#12 4.673 Content type 'binary/octet-stream' length 510561 bytes (498 KB)
+#12 4.673 ==================================================
+#12 4.975 downloaded 498 KB
+#12 4.975 
+#12 5.184 * installing *binary* package ‘BiocManager’ ...
+#12 5.188 * DONE (BiocManager)
+#12 5.194 
+#12 5.194 The downloaded source packages are in
+#12 5.194 	‘/tmp/RtmpjjBCNj/downloaded_packages’
+#12 5.634 'getOption("repos")' replaces Bioconductor standard repositories, see
+#12 5.634 'help("repositories", package = "BiocManager")' for details.
+#12 5.634 Replacement repositories:
+#12 5.634     CRAN: https://p3m.dev/cran/__linux__/noble/latest
+#12 9.572 Bioconductor version 3.20 (BiocManager 1.30.26), R 4.4.3 (2025-02-28)
+#12 9.572 Installing package(s) 'seqinr', 'topGO'
+#12 9.782 also installing the dependencies ‘pixmap’, ‘ade4’
+#12 9.782 
+#12 9.783 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/pixmap_0.4-13.tar.gz'
+#12 11.08 Content type 'binary/octet-stream' length 213309 bytes (208 KB)
+#12 11.08 ==================================================
+#12 11.38 downloaded 208 KB
+#12 11.38 
+#12 11.39 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/ade4_1.7-23.tar.gz'
+#12 12.18 Content type 'binary/octet-stream' length 5460445 bytes (5.2 MB)
+#12 12.23 ==================================================
+#12 13.74 downloaded 5.2 MB
+#12 13.74 
+#12 13.74 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/seqinr_4.2-36.tar.gz'
+#12 14.99 Content type 'binary/octet-stream' length 4157370 bytes (4.0 MB)
+#12 15.19 ==================================================
+#12 16.40 downloaded 4.0 MB
+#12 16.40 
+#12 16.41 trying URL 'https://bioconductor.org/packages/3.20/bioc/src/contrib/topGO_2.58.0.tar.gz'
+#12 16.91 Content type 'application/gzip' length 2002683 bytes (1.9 MB)
+#12 16.96 ==================================================
+#12 17.65 downloaded 1.9 MB
+#12 17.65 
+#12 17.83 * installing *binary* package ‘pixmap’ ...
+#12 17.84 * DONE (pixmap)
+#12 18.08 * installing *source* package ‘topGO’ ...
+#12 18.08 ** package ‘topGO’ successfully unpacked and MD5 sums checked
+#12 18.08 ** using staged installation
+#12 18.09 ** R
+#12 18.10 ** data
+#12 18.10 ** inst
+#12 18.10 ** byte-compile and prepare package for lazy loading
+#12 22.38 ** help
+#12 22.43 *** installing help indices
+#12 22.46 ** building package indices
+#12 22.65 ** installing vignettes
+#12 22.65 ** testing if installed package can be loaded from temporary location
+#12 24.76 
+#12 24.76 groupGOTerms: 	GOBPTerm, GOMFTerm, GOCCTerm environments built.
+#12 24.76 ** testing if installed package can be loaded from final location
+#12 26.91 
+#12 26.91 groupGOTerms: 	GOBPTerm, GOMFTerm, GOCCTerm environments built.
+#12 26.91 ** testing if installed package keeps a record of temporary installation path
+#12 26.91 * DONE (topGO)
+#12 27.25 * installing *binary* package ‘ade4’ ...
+#12 27.26 * DONE (ade4)
+#12 27.57 * installing *binary* package ‘seqinr’ ...
+#12 27.57 * DONE (seqinr)
+#12 27.58 
+#12 27.58 The downloaded source packages are in
+#12 27.58 	‘/tmp/RtmpjjBCNj/downloaded_packages’
+#12 27.58 > 
+#12 27.58 > 
+#12 DONE 27.6s
+
+#13 [stage-0 9/9] RUN --mount=type=secret,id=renv,target=/root/.Renviron     R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "1b244d8f0d54b4b1cb4365639931bbb16f01e1cd")'
+#13 0.183 
+#13 0.183 R version 4.4.3 (2025-02-28) -- "Trophy Case"
+#13 0.183 Copyright (C) 2025 The R Foundation for Statistical Computing
+#13 0.183 Platform: x86_64-pc-linux-gnu
+#13 0.183 
+#13 0.183 R is free software and comes with ABSOLUTELY NO WARRANTY.
+#13 0.183 You are welcome to redistribute it under certain conditions.
+#13 0.183 Type 'license()' or 'licence()' for distribution details.
+#13 0.183 
+#13 0.183   Natural language support but running in an English locale
+#13 0.183 
+#13 0.183 R is a collaborative project with many contributors.
+#13 0.183 Type 'contributors()' for more information and
+#13 0.183 'citation()' on how to cite R or R packages in publications.
+#13 0.183 
+#13 0.183 Type 'demo()' for some demos, 'help()' for on-line help, or
+#13 0.183 'help.start()' for an HTML browser interface to help.
+#13 0.183 Type 'q()' to quit R.
+#13 0.183 
+#13 0.253 > remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "1b244d8f0d54b4b1cb4365639931bbb16f01e1cd")
+#13 0.273 Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.
+#13 0.533 Downloading GitHub repo chris-mcginnis-ucsf/DoubletFinder@1b244d8f0d54b4b1cb4365639931bbb16f01e1cd
+#13 4.866 ── R CMD build ─────────────────────────────────────────────────────────────────
+#13 5.012 * checking for file ‘/tmp/RtmpFCtGSe/remotes7e3a2cbe/chris-mcginnis-ucsf-DoubletFinder-1b244d8/DESCRIPTION’ ... OK
+#13 5.017 * preparing ‘DoubletFinder’:
+#13 5.017 * checking DESCRIPTION meta-information ... OK
+#13 5.173 * checking for LF line-endings in source and make files and shell scripts
+#13 5.173 * checking for empty or unneeded directories
+#13 5.175 * building ‘DoubletFinder_2.0.6.tar.gz’
+#13 5.239 
+#13 5.247 Installing package into ‘/usr/local/lib/R/site-library’
+#13 5.247 (as ‘lib’ is unspecified)
+#13 5.439 * installing *source* package ‘DoubletFinder’ ...
+#13 5.440 ** using staged installation
+#13 5.447 ** R
+#13 5.450 ** data
+#13 5.450 *** moving datasets to lazyload DB
+#13 5.473 ** byte-compile and prepare package for lazy loading
+#13 8.110 ** help
+#13 8.125 *** installing help indices
+#13 8.135 ** building package indices
+#13 8.292 ** testing if installed package can be loaded from temporary location
+#13 10.59 ** testing if installed package can be loaded from final location
+#13 12.85 ** testing if installed package keeps a record of temporary installation path
+#13 12.85 * DONE (DoubletFinder)
+#13 12.85 > 
+#13 12.85 > 
+#13 DONE 12.9s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 2.6s done
+#14 writing image sha256:983e55b7c98de8bdb6e087acde6dc432cb807ebe51923edbe2c19a7fe3f39eae done
+#14 naming to docker.io/library/verse_with_more_packages:4.4.3_1 done
+#14 DONE 2.6s
