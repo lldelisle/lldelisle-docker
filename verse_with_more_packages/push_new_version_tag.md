@@ -24,14 +24,22 @@
 
 ```bash
 cd verse_with_more_packages/image/
-docker build --secret id=renv,src=/home/delislel/.Renviron -f Dockerfile_4.4.2 -t verse_with_more_packages:4.4.2_1
+RVERSION=4.4.3
+IMAGE_VERSION=1
+docker build --secret id=renv,src=/home/delislel/.Renviron -t verse_with_more_packages:${RVERSION}_${IMAGE_VERSION} -f ./Dockerfile_${RVERSION} . &> ${RVERSION}_${IMAGE_VERSION}.log
 ```
 If it is recreating the first layers instead of using the cache, then you need to change the docker file to start from the previous version like [this example](./image/Dockerfile_4.4.1_8).
 
 1. Tag it for dockerhub and push
 
 ```bash
-docker image tag verse_with_more_packages:<r_version>_<image_version> lldelisle/verse_with_more_packages:<r_version>_<image_version> &> <r_version>_<image_version>.log
+docker image tag verse_with_more_packages:${RVERSION}_${IMAGE_VERSION} lldelisle/verse_with_more_packages:${RVERSION}_${IMAGE_VERSION}
+```
+
+1. (Optional) create a singularity
+
+```bash
+singularity build verse_with_more_packages_${RVERSION}_${IMAGE_VERSION}.sif docker-daemon://verse_with_more_packages:${RVERSION}_${IMAGE_VERSION}
 ```
 
 ## How to create a version because there is a new version of R
@@ -57,4 +65,10 @@ docker build --secret id=renv,src=/home/delislel/.Renviron -f Dockerfile_${RVERS
 ```bash
 docker image tag verse_with_more_packages:${RVERSION}_0 lldelisle/verse_with_more_packages:${RVERSION}_0
 docker push lldelisle/verse_with_more_packages:${RVERSION}_0
+```
+
+1. (Optional) create a singularity
+
+```bash
+singularity build verse_with_more_packages_${RVERSION}_0.sif docker-daemon://verse_with_more_packages:${RVERSION}_0
 ```
