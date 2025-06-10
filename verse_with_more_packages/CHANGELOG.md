@@ -1,6 +1,7 @@
 # [4.4.3_1] 2025-03-25
 
-Add seqinr, topGO
+Add seqinr 4.2-36, topGO 2.58.0
+Add DoubletFinder from github 2.0.6
 
 # [4.4.3_0] 2025-03-24
 

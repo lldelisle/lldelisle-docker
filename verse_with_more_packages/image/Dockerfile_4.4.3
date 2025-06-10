@@ -32,3 +32,7 @@ RUN --mount=type=secret,id=renv,target=/root/.Renviron \
 # Install another round of R packages from CRAN and Bioconductor
 COPY helpers/packages.to.install_4.4.3_1.txt /tmp/
 RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_1.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+# Install DoubletFinder
+# The .Renviron contains the GITHUB_PAT
+RUN --mount=type=secret,id=renv,target=/root/.Renviron \
+    R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "1b244d8f0d54b4b1cb4365639931bbb16f01e1cd")'
