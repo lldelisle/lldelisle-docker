@@ -34,6 +34,7 @@ If it is recreating the first layers instead of using the cache, then you need t
 
 ```bash
 docker image tag verse_with_more_packages:${RVERSION}_${IMAGE_VERSION} lldelisle/verse_with_more_packages:${RVERSION}_${IMAGE_VERSION}
+docker push lldelisle/verse_with_more_packages:${RVERSION}_${IMAGE_VERSION}
 ```
 
 1. (Optional) create a singularity
