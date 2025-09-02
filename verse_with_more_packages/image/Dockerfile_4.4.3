@@ -36,3 +36,16 @@ RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packag
 # The .Renviron contains the GITHUB_PAT
 RUN --mount=type=secret,id=renv,target=/root/.Renviron \
     R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "1b244d8f0d54b4b1cb4365639931bbb16f01e1cd")'
+# Install the windows fonts
+# Thanks to https://stackoverflow.com/a/77216646
+RUN apt-get update \
+    && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends ttf-mscorefonts-installer \
+    && rm -rf /var/lib/apt/lists/*
+# Build font cache
+RUN fc-cache -f
+# Install another round of R packages from CRAN and Bioconductor
+COPY helpers/packages.to.install_4.4.3_2.txt /tmp/
+RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_2.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+# Load the fonts
+RUN R -e 'library(extrafont);font_import(prompt = FALSE);loadfonts(device = "all")'

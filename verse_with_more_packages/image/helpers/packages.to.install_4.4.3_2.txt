@@ -1,0 +1,5 @@
+scDblFinder
+extrafont
+JASPAR2022
+BSgenome.Hsapiens.UCSC.hg38
+gprofiler2

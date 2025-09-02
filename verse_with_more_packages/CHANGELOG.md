@@ -1,3 +1,15 @@
+# [4.4.3_2] 2025-06-19
+
+Add microsoft fonts
+
+Add:
+
+- extrafont 0.19
+- scDblFinder 1.20.2
+- JASPAR2022 0.99.8
+- BSgenome.Hsapiens.UCSC.hg38 1.4.5
+- gprofiler2 0.2.3
+
 # [4.4.3_1] 2025-03-25
 
 Add seqinr 4.2-36, topGO 2.58.0
