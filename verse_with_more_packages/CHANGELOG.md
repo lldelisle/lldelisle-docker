@@ -1,3 +1,46 @@
+# [4.5.2_0] 2026-02-13
+
+Based on rocker/verse:4.5.2
+
+scvelo (version 0.3.3) has been installed in a virtual environment available at `/root/venv/`.
+
+kaleido (version 1.2.0) and plotly (python version 6.5.2) has been installed in a virtual environment available at `/root/venv2/`.
+
+Compared to 4.4.3_3 some databases have been removed like BSgenome, org.
+
+All R packages listed in [this file](./image/helpers/packages.to.install_4.5.2_0.txt) have been installed. Here are the version of some packages:
+
+- biomaRt 2.66.0
+- chromVAR 1.32.0
+- ComplexHeatmap 2.26.1
+- demuxmix 1.12.0
+- DESeq2 1.50.2
+- DoubletFinder from github 2.0.6
+- extrafont 0.20
+- GenomicRanges 1.62.1
+- ggh4x 0.3.1
+- ggplot2 3.5.1 TODO
+- ggpubr 0.6.2
+- ggseqlogo 0.2.2
+- goseq 1.62.0
+- gprofiler2 0.2.4
+- harmony version 1.2.4
+- JASPAR2022 0.99.8
+- JASPAR2024 version 0.99.7
+- pheatmap 1.0.13
+- presto 1.0.0
+- Rsamtools 2.26.0
+- rtracklayer 1.70.0
+- scCustomize 3.2.4
+- scDblFinder 1.24.0
+- seqinr 4.2-36
+- Seurat 5.4.0
+- Signac 1.16.0
+- SoupX version 1.6.2
+- TFBSTools 1.48.0
+- topGO 2.62.0
+- usefulLDfunctions 0.1.6
+
 # [4.4.3_3] 2026-02-13
 
 Add R packages for the shinyapp

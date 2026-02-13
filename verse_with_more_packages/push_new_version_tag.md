@@ -57,7 +57,7 @@ singularity build verse_with_more_packages_${RVERSION}_${IMAGE_VERSION}.sif dock
 1. Build it using the GITHUB_PAT
 
 ```bash
-RVERSION=4.4.3
+RVERSION=4.5.2
 cd verse_with_more_packages/image/
 docker build --secret id=renv,src=/home/delislel/.Renviron -f Dockerfile_${RVERSION} -t verse_with_more_packages:${RVERSION}_0 . &> ${RVERSION}_0.log
 ```
@@ -72,5 +72,6 @@ docker push lldelisle/verse_with_more_packages:${RVERSION}_0
 1. (Optional) create a singularity
 
 ```bash
+export APPTAINER_TMPDIR=$PWD/
 singularity build verse_with_more_packages_${RVERSION}_0.sif docker-daemon://verse_with_more_packages:${RVERSION}_0
 ```
