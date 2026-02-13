@@ -49,3 +49,8 @@ COPY helpers/packages.to.install_4.4.3_2.txt /tmp/
 RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_2.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
 # Load the fonts
 RUN R -e 'library(extrafont);font_import(prompt = FALSE);loadfonts(device = "all")'
+# Create a venv for the shiny app
+RUN python3 -m venv /root/venv2; . /root/venv2/bin/activate; pip install plotly kaleido
+# Install another round of R packages from CRAN and Bioconductor
+COPY helpers/packages.to.install_4.4.3_3.txt /tmp/
+RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_3.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'

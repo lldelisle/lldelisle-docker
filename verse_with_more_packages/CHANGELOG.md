@@ -1,3 +1,14 @@
+# [4.4.3_3] 2026-02-13
+
+Add R packages for the shinyapp
+
+kaleido (version 1.2.0) and plotly (python version 6.5.2) has been installed in a virtual environment available at `/root/venv2/`.
+
+Add:
+- JASPAR2024 version 0.99.6
+- SoupX version 1.6.2
+- harmony version 1.2.4
+
 # [4.4.3_2] 2025-06-19
 
 Add microsoft fonts

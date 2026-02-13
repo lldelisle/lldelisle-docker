@@ -25,7 +25,7 @@
 ```bash
 cd verse_with_more_packages/image/
 RVERSION=4.4.3
-IMAGE_VERSION=2
+IMAGE_VERSION=3
 docker build --secret id=renv,src=/home/delislel/.Renviron -t verse_with_more_packages:${RVERSION}_${IMAGE_VERSION} -f ./Dockerfile_${RVERSION} . &> ${RVERSION}_${IMAGE_VERSION}.log
 ```
 If it is recreating the first layers instead of using the cache, then you need to change the docker file to start from the previous version like [this example](./image/Dockerfile_4.4.1_8).

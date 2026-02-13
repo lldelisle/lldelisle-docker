@@ -1,0 +1,7 @@
+logging
+rlist
+shinyjs
+shinythemes
+JASPAR2024
+SoupX
+harmony
