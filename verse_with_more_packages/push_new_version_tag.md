@@ -40,6 +40,7 @@ docker push lldelisle/verse_with_more_packages:${RVERSION}_${IMAGE_VERSION}
 1. (Optional) create a singularity
 
 ```bash
+export APPTAINER_TMPDIR=$PWD/
 singularity build verse_with_more_packages_${RVERSION}_${IMAGE_VERSION}.sif docker-daemon://verse_with_more_packages:${RVERSION}_${IMAGE_VERSION}
 ```
 
