@@ -1,3 +1,9 @@
+# [4.4.3_2RePACT] 2025-09-17
+
+I installed RePACT version c63a48c679bb86c78b90860ee0df9e51f9c41b50 but this required to install Matrix version 0.9.8 which is deprecated.
+
+As this version requires a non official package it is not published on dockerhub.
+
 # [4.4.3_2] 2025-06-19
 
 Add microsoft fonts

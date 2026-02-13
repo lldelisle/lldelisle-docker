@@ -1,0 +1,278 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile_4.4.3_RePACT
+#1 transferring dockerfile: 4.29kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/rocker/verse:4.4.3
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [stage-0  1/17] FROM docker.io/rocker/verse:4.4.3
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 1.09kB done
+#5 DONE 0.1s
+
+#6 [stage-0  4/17] RUN python3 -m venv /root/venv; . /root/venv/bin/activate; pip install anndata scvelo 'numpy<2' 'scipy<1.14.0'
+#6 CACHED
+
+#7 [stage-0  2/17] COPY helpers/packages.to.install_4.4.3_0.txt /tmp/
+#7 CACHED
+
+#8 [stage-0 12/17] COPY helpers/packages.to.install_4.4.3_2.txt /tmp/
+#8 CACHED
+
+#9 [stage-0 11/17] RUN fc-cache -f
+#9 CACHED
+
+#10 [stage-0  7/17] COPY helpers/packages.to.install_4.4.3_1.txt /tmp/
+#10 CACHED
+
+#11 [stage-0  8/17] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_1.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#11 CACHED
+
+#12 [stage-0 10/17] RUN apt-get update     && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections     && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends ttf-mscorefonts-installer     && rm -rf /var/lib/apt/lists/*
+#12 CACHED
+
+#13 [stage-0 13/17] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_2.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#13 CACHED
+
+#14 [stage-0  6/17] RUN --mount=type=secret,id=renv,target=/root/.Renviron     R -e 'remotes::install_github("satijalab/seurat-wrappers", upgrade = "never", ref = "8d46d6c47c089e193fe5c02a8c23970715918aa9");remotes::install_github("cellgeni/sceasy", ref = "c1c0bf973b0b3b67e013c01bf583d1fcc4c9f8cc", upgrade = "never");remotes::install_github("lldelisle/velocyto.R", ref = "comment_rf_warning", upgrade = "never");remotes::install_github("immunogenomics/presto", upgrade = "never", ref = "7636b3d0465c468c35853f82f1717d3a64b3c8f6");remotes::install_github("lldelisle/usefulLDfunctions", upgrade = "never", ref = "v0.1.6");remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "b86c53ab8940602f0aeb8cd27315482a3efb83f0");remotes::install_github("mojaveazure/seurat-disk", upgrade = "never", ref = "877d4e18ab38c686f5db54f8cd290274ccdbe295");remotes::install_github("cole-trapnell-lab/monocle3", upgrade = "never", ref = "98402ed0c10cac020524bebbb9300614a799f6d1")'
+#14 CACHED
+
+#15 [stage-0  9/17] RUN --mount=type=secret,id=renv,target=/root/.Renviron     R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "1b244d8f0d54b4b1cb4365639931bbb16f01e1cd")'
+#15 CACHED
+
+#16 [stage-0  3/17] RUN apt-get update     && apt-get install -y --no-install-recommends     libhdf5-dev     libudunits2-dev     patch     libgdal-dev     libgsl-dev     libboost-filesystem-dev libboost-system-dev     python3     python3-venv     python3-pip     && rm -rf /var/lib/apt/lists/*
+#16 CACHED
+
+#17 [stage-0  5/17] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_0.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#17 CACHED
+
+#18 [stage-0 14/17] RUN R -e 'library(extrafont);font_import(prompt = FALSE);loadfonts(device = "all")'
+#18 CACHED
+
+#19 [stage-0 15/17] RUN apt-get update     && apt-get install -y --no-install-recommends tk     && rm -rf /var/lib/apt/lists/*
+#19 0.361 Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#19 0.514 Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#19 0.547 Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#19 0.600 Get:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#19 0.673 Get:5 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#19 0.740 Get:6 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#19 0.757 Get:7 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#19 1.077 Get:8 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2,223 kB]
+#19 3.009 Get:9 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1,136 kB]
+#19 3.410 Get:10 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [53.1 kB]
+#19 3.419 Get:11 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1,410 kB]
+#19 5.007 Get:12 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1,808 kB]
+#19 5.304 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1,921 kB]
+#19 5.637 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [58.1 kB]
+#19 5.646 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2,396 kB]
+#19 6.092 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1,793 kB]
+#19 6.388 Get:17 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [48.8 kB]
+#19 6.397 Get:18 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [35.6 kB]
+#19 8.657 Fetched 33.3 MB in 6s (5,384 kB/s)
+#19 8.657 Reading package lists...
+#19 9.366 Reading package lists...
+#19 10.03 Building dependency tree...
+#19 10.16 Reading state information...
+#19 10.32 The following additional packages will be installed:
+#19 10.32   libtcl8.6 libtk8.6 libxft2 libxss1 tcl tcl8.6 tk8.6
+#19 10.32 Suggested packages:
+#19 10.32   tcl-tclreadline
+#19 10.34 The following NEW packages will be installed:
+#19 10.35   libtcl8.6 libtk8.6 libxft2 libxss1 tcl tcl8.6 tk tk8.6
+#19 10.57 0 upgraded, 8 newly installed, 0 to remove and 148 not upgraded.
+#19 10.57 Need to get 1,853 kB of archives.
+#19 10.57 After this operation, 6,883 kB of additional disk space will be used.
+#19 10.57 Get:1 http://archive.ubuntu.com/ubuntu noble/main amd64 libtcl8.6 amd64 8.6.14+dfsg-1build1 [988 kB]
+#19 11.44 Get:2 http://archive.ubuntu.com/ubuntu noble/main amd64 libxft2 amd64 2.3.6-1build1 [45.3 kB]
+#19 11.45 Get:3 http://archive.ubuntu.com/ubuntu noble/main amd64 libxss1 amd64 1:1.2.3-1build3 [7,204 B]
+#19 11.46 Get:4 http://archive.ubuntu.com/ubuntu noble/main amd64 libtk8.6 amd64 8.6.14-1build1 [779 kB]
+#19 11.61 Get:5 http://archive.ubuntu.com/ubuntu noble/main amd64 tcl8.6 amd64 8.6.14+dfsg-1build1 [14.7 kB]
+#19 11.61 Get:6 http://archive.ubuntu.com/ubuntu noble/main amd64 tcl amd64 8.6.14build1 [4,124 B]
+#19 11.61 Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 tk8.6 amd64 8.6.14-1build1 [12.5 kB]
+#19 11.61 Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 tk amd64 8.6.14build1 [3,076 B]
+#19 11.77 debconf: delaying package configuration, since apt-utils is not installed
+#19 11.85 Fetched 1,853 kB in 1s (1,479 kB/s)
+#19 11.91 Selecting previously unselected package libtcl8.6:amd64.
+#19 11.91 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 66997 files and directories currently installed.)
+#19 11.93 Preparing to unpack .../0-libtcl8.6_8.6.14+dfsg-1build1_amd64.deb ...
+#19 11.96 Unpacking libtcl8.6:amd64 (8.6.14+dfsg-1build1) ...
+#19 12.07 Selecting previously unselected package libxft2:amd64.
+#19 12.07 Preparing to unpack .../1-libxft2_2.3.6-1build1_amd64.deb ...
+#19 12.09 Unpacking libxft2:amd64 (2.3.6-1build1) ...
+#19 12.18 Selecting previously unselected package libxss1:amd64.
+#19 12.19 Preparing to unpack .../2-libxss1_1%3a1.2.3-1build3_amd64.deb ...
+#19 12.20 Unpacking libxss1:amd64 (1:1.2.3-1build3) ...
+#19 12.29 Selecting previously unselected package libtk8.6:amd64.
+#19 12.29 Preparing to unpack .../3-libtk8.6_8.6.14-1build1_amd64.deb ...
+#19 12.30 Unpacking libtk8.6:amd64 (8.6.14-1build1) ...
+#19 12.39 Selecting previously unselected package tcl8.6.
+#19 12.39 Preparing to unpack .../4-tcl8.6_8.6.14+dfsg-1build1_amd64.deb ...
+#19 12.40 Unpacking tcl8.6 (8.6.14+dfsg-1build1) ...
+#19 12.49 Selecting previously unselected package tcl.
+#19 12.49 Preparing to unpack .../5-tcl_8.6.14build1_amd64.deb ...
+#19 12.50 Unpacking tcl (8.6.14build1) ...
+#19 12.58 Selecting previously unselected package tk8.6.
+#19 12.58 Preparing to unpack .../6-tk8.6_8.6.14-1build1_amd64.deb ...
+#19 12.60 Unpacking tk8.6 (8.6.14-1build1) ...
+#19 12.68 Selecting previously unselected package tk.
+#19 12.68 Preparing to unpack .../7-tk_8.6.14build1_amd64.deb ...
+#19 12.70 Unpacking tk (8.6.14build1) ...
+#19 12.79 Setting up libxft2:amd64 (2.3.6-1build1) ...
+#19 12.83 Setting up libtcl8.6:amd64 (8.6.14+dfsg-1build1) ...
+#19 12.87 Setting up libxss1:amd64 (1:1.2.3-1build3) ...
+#19 12.91 Setting up tcl8.6 (8.6.14+dfsg-1build1) ...
+#19 12.95 Setting up libtk8.6:amd64 (8.6.14-1build1) ...
+#19 12.99 Setting up tcl (8.6.14build1) ...
+#19 13.03 Setting up tk8.6 (8.6.14-1build1) ...
+#19 13.08 Setting up tk (8.6.14build1) ...
+#19 13.12 Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+#19 DONE 15.4s
+
+#20 [stage-0 16/17] COPY helpers/install_RePACT.R /tmp/
+#20 DONE 0.1s
+
+#21 [stage-0 17/17] RUN Rscript /tmp/install_RePACT.R
+#21 0.367 trying URL 'https://cran.r-project.org/src/contrib/Archive/Matrix.utils/Matrix.utils_0.9.8.tar.gz'
+#21 0.576 Content type 'application/x-gzip' length 10026 bytes
+#21 0.576 ==================================================
+#21 0.576 downloaded 10026 bytes
+#21 0.576 
+#21 0.579 Installing package into ‘/usr/local/lib/R/site-library’
+#21 0.579 (as ‘lib’ is unspecified)
+#21 0.751 * installing *source* package ‘Matrix.utils’ ...
+#21 0.752 ** package ‘Matrix.utils’ successfully unpacked and MD5 sums checked
+#21 0.752 ** using staged installation
+#21 0.758 ** R
+#21 0.760 ** byte-compile and prepare package for lazy loading
+#21 1.649 ** help
+#21 1.663 *** installing help indices
+#21 1.672 ** building package indices
+#21 1.823 ** testing if installed package can be loaded from temporary location
+#21 2.475 ** testing if installed package can be loaded from final location
+#21 3.194 ** testing if installed package keeps a record of temporary installation path
+#21 3.197 * DONE (Matrix.utils)
+#21 3.202 Installing package into ‘/usr/local/lib/R/site-library’
+#21 3.202 (as ‘lib’ is unspecified)
+#21 7.170 also installing the dependency ‘misc3d’
+#21 7.170 
+#21 7.171 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/misc3d_0.9-1.tar.gz'
+#21 8.187 Content type 'binary/octet-stream' length 240066 bytes (234 KB)
+#21 8.187 ==================================================
+#21 8.235 downloaded 234 KB
+#21 8.235 
+#21 8.237 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/plot3D_1.4.2.tar.gz'
+#21 9.253 Content type 'binary/octet-stream' length 2748490 bytes (2.6 MB)
+#21 9.364 ==================================================
+#21 12.58 downloaded 2.6 MB
+#21 12.58 
+#21 12.87 * installing *binary* package ‘misc3d’ ...
+#21 12.87 * DONE (misc3d)
+#21 13.30 * installing *binary* package ‘plot3D’ ...
+#21 13.31 * DONE (plot3D)
+#21 13.32 
+#21 13.32 The downloaded source packages are in
+#21 13.32 	‘/tmp/Rtmpu8BzMH/downloaded_packages’
+#21 13.32 Installing package into ‘/usr/local/lib/R/site-library’
+#21 13.32 (as ‘lib’ is unspecified)
+#21 13.90 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/rlist_0.4.6.2.tar.gz'
+#21 14.69 Content type 'binary/octet-stream' length 248410 bytes (242 KB)
+#21 14.69 ==================================================
+#21 14.76 downloaded 242 KB
+#21 14.76 
+#21 15.06 * installing *binary* package ‘rlist’ ...
+#21 15.06 * DONE (rlist)
+#21 15.07 
+#21 15.07 The downloaded source packages are in
+#21 15.07 	‘/tmp/Rtmpu8BzMH/downloaded_packages’
+#21 16.65 Downloading GitHub repo chenweng1991/RePACT@c63a48c679bb86c78b90860ee0df9e51f9c41b50
+#21 21.91 ── R CMD build ─────────────────────────────────────────────────────────────────
+#21 22.06 * checking for file ‘/tmp/Rtmpu8BzMH/remotes763fe15c2/chenweng1991-RePACT-c63a48c/DESCRIPTION’ ... OK
+#21 22.06 * preparing ‘RePACT’:
+#21 22.06 * checking DESCRIPTION meta-information ... OK
+#21 22.24 * checking for LF line-endings in source and make files and shell scripts
+#21 22.24 * checking for empty or unneeded directories
+#21 22.24 * building ‘RePACT_0.0.0.9000.tar.gz’
+#21 22.47 
+#21 22.48 Installing package into ‘/usr/local/lib/R/site-library’
+#21 22.48 (as ‘lib’ is unspecified)
+#21 22.82 * installing *source* package ‘RePACT’ ...
+#21 22.82 ** using staged installation
+#21 22.83 ** R
+#21 22.83 ** byte-compile and prepare package for lazy loading
+#21 28.71 Warning: replacing previous import ‘dplyr::combine’ by ‘gridExtra::combine’ when loading ‘RePACT’
+#21 28.71 Warning: no DISPLAY variable so Tk is not available
+#21 28.71 Warning: replacing previous import ‘dplyr::rename’ by ‘plyr::rename’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::count’ by ‘plyr::count’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::failwith’ by ‘plyr::failwith’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::id’ by ‘plyr::id’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::summarize’ by ‘plyr::summarize’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::summarise’ by ‘plyr::summarise’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::mutate’ by ‘plyr::mutate’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::desc’ by ‘plyr::desc’ when loading ‘RePACT’
+#21 28.71 Warning: replacing previous import ‘dplyr::arrange’ by ‘plyr::arrange’ when loading ‘RePACT’
+#21 28.71 ** help
+#21 28.73 *** installing help indices
+#21 28.74 ** building package indices
+#21 28.93 ** testing if installed package can be loaded from temporary location
+#21 34.12 Warning: replacing previous import ‘dplyr::combine’ by ‘gridExtra::combine’ when loading ‘RePACT’
+#21 34.12 Warning: no DISPLAY variable so Tk is not available
+#21 34.12 Warning: replacing previous import ‘dplyr::rename’ by ‘plyr::rename’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::count’ by ‘plyr::count’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::failwith’ by ‘plyr::failwith’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::id’ by ‘plyr::id’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::summarize’ by ‘plyr::summarize’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::summarise’ by ‘plyr::summarise’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::mutate’ by ‘plyr::mutate’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::desc’ by ‘plyr::desc’ when loading ‘RePACT’
+#21 34.12 Warning: replacing previous import ‘dplyr::arrange’ by ‘plyr::arrange’ when loading ‘RePACT’
+#21 34.13 ** testing if installed package can be loaded from final location
+#21 39.21 Warning: replacing previous import ‘dplyr::combine’ by ‘gridExtra::combine’ when loading ‘RePACT’
+#21 39.21 Warning: no DISPLAY variable so Tk is not available
+#21 39.21 Warning: replacing previous import ‘dplyr::rename’ by ‘plyr::rename’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::count’ by ‘plyr::count’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::failwith’ by ‘plyr::failwith’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::id’ by ‘plyr::id’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::summarize’ by ‘plyr::summarize’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::summarise’ by ‘plyr::summarise’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::mutate’ by ‘plyr::mutate’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::desc’ by ‘plyr::desc’ when loading ‘RePACT’
+#21 39.21 Warning: replacing previous import ‘dplyr::arrange’ by ‘plyr::arrange’ when loading ‘RePACT’
+#21 39.21 ** testing if installed package keeps a record of temporary installation path
+#21 39.21 * DONE (RePACT)
+#21 DONE 39.3s
+
+#22 exporting to image
+#22 exporting layers
+#22 exporting layers 4.4s done
+#22 writing image sha256:77300336b5bcfbf83febc3ba423f74554d289481fdee62feb4d10a31738f4257 done
+#22 naming to docker.io/library/verse_with_more_packages:4.4.3_2RePACT 0.0s done
+#22 DONE 4.4s
