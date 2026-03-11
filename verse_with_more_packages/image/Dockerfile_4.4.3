@@ -54,3 +54,6 @@ RUN python3 -m venv /root/venv2; . /root/venv2/bin/activate; pip install plotly 
 # Install another round of R packages from CRAN and Bioconductor
 COPY helpers/packages.to.install_4.4.3_3.txt /tmp/
 RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_3.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+# Install another round of R packages from CRAN and Bioconductor
+COPY helpers/packages.to.install_4.4.3_4.txt /tmp/
+RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_4.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'

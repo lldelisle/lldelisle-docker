@@ -41,6 +41,13 @@ All R packages listed in [this file](./image/helpers/packages.to.install_4.5.2_0
 - topGO 2.62.0
 - usefulLDfunctions 0.1.6
 
+# [4.4.3_4] 2026-03-11
+
+Add:
+- TxDb.Mmusculus.UCSC.mm10.knownGene version 3.10.0
+- ATACseqQC version 1.30.0
+- optparse version 1.7.5
+
 # [4.4.3_3] 2026-02-13
 
 Add R packages for the shinyapp
