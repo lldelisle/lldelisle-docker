@@ -41,6 +41,12 @@ All R packages listed in [this file](./image/helpers/packages.to.install_4.5.2_0
 - topGO 2.62.0
 - usefulLDfunctions 0.1.6
 
+# [4.4.3_5] 2026-03-26
+
+Add:
+- ggthemes version 5.2.0
+- ChIPseeker version 1.42.1
+
 # [4.4.3_4] 2026-03-11
 
 Add:

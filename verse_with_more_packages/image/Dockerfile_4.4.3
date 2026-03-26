@@ -57,3 +57,5 @@ RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packag
 # Install another round of R packages from CRAN and Bioconductor
 COPY helpers/packages.to.install_4.4.3_4.txt /tmp/
 RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_4.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+COPY helpers/packages.to.install_4.4.3_5.txt /tmp/
+RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_5.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'

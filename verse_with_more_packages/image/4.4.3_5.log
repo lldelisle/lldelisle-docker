@@ -1,0 +1,182 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile_4.4.3
+#1 transferring dockerfile: 5.00kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/rocker/verse:4.4.3
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [stage-0  1/21] FROM docker.io/rocker/verse:4.4.3
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 378B done
+#5 DONE 0.0s
+
+#6 [stage-0 16/21] COPY helpers/packages.to.install_4.4.3_3.txt /tmp/
+#6 CACHED
+
+#7 [stage-0 18/21] COPY helpers/packages.to.install_4.4.3_4.txt /tmp/
+#7 CACHED
+
+#8 [stage-0 10/21] RUN apt-get update     && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections     && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends ttf-mscorefonts-installer     && rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [stage-0  7/21] COPY helpers/packages.to.install_4.4.3_1.txt /tmp/
+#9 CACHED
+
+#10 [stage-0  9/21] RUN --mount=type=secret,id=renv,target=/root/.Renviron     R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "1b244d8f0d54b4b1cb4365639931bbb16f01e1cd")'
+#10 CACHED
+
+#11 [stage-0 12/21] COPY helpers/packages.to.install_4.4.3_2.txt /tmp/
+#11 CACHED
+
+#12 [stage-0 17/21] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_3.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#12 CACHED
+
+#13 [stage-0  4/21] RUN python3 -m venv /root/venv; . /root/venv/bin/activate; pip install anndata scvelo 'numpy<2' 'scipy<1.14.0'
+#13 CACHED
+
+#14 [stage-0 19/21] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_4.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#14 CACHED
+
+#15 [stage-0  5/21] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_0.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#15 CACHED
+
+#16 [stage-0  2/21] COPY helpers/packages.to.install_4.4.3_0.txt /tmp/
+#16 CACHED
+
+#17 [stage-0  3/21] RUN apt-get update     && apt-get install -y --no-install-recommends     libhdf5-dev     libudunits2-dev     patch     libgdal-dev     libgsl-dev     libboost-filesystem-dev libboost-system-dev     python3     python3-venv     python3-pip     && rm -rf /var/lib/apt/lists/*
+#17 CACHED
+
+#18 [stage-0 13/21] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_2.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#18 CACHED
+
+#19 [stage-0  8/21] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_1.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#19 CACHED
+
+#20 [stage-0 14/21] RUN R -e 'library(extrafont);font_import(prompt = FALSE);loadfonts(device = "all")'
+#20 CACHED
+
+#21 [stage-0 15/21] RUN python3 -m venv /root/venv2; . /root/venv2/bin/activate; pip install plotly kaleido
+#21 CACHED
+
+#22 [stage-0 11/21] RUN fc-cache -f
+#22 CACHED
+
+#23 [stage-0  6/21] RUN --mount=type=secret,id=renv,target=/root/.Renviron     R -e 'remotes::install_github("satijalab/seurat-wrappers", upgrade = "never", ref = "8d46d6c47c089e193fe5c02a8c23970715918aa9");remotes::install_github("cellgeni/sceasy", ref = "c1c0bf973b0b3b67e013c01bf583d1fcc4c9f8cc", upgrade = "never");remotes::install_github("lldelisle/velocyto.R", ref = "comment_rf_warning", upgrade = "never");remotes::install_github("immunogenomics/presto", upgrade = "never", ref = "7636b3d0465c468c35853f82f1717d3a64b3c8f6");remotes::install_github("lldelisle/usefulLDfunctions", upgrade = "never", ref = "v0.1.6");remotes::install_github("chris-mcginnis-ucsf/DoubletFinder", upgrade = "never", ref = "b86c53ab8940602f0aeb8cd27315482a3efb83f0");remotes::install_github("mojaveazure/seurat-disk", upgrade = "never", ref = "877d4e18ab38c686f5db54f8cd290274ccdbe295");remotes::install_github("cole-trapnell-lab/monocle3", upgrade = "never", ref = "98402ed0c10cac020524bebbb9300614a799f6d1")'
+#23 CACHED
+
+#24 [stage-0 20/21] COPY helpers/packages.to.install_4.4.3_5.txt /tmp/
+#24 DONE 0.1s
+
+#25 [stage-0 21/21] RUN R -e 'install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_5.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)'
+#25 0.296 
+#25 0.296 R version 4.4.3 (2025-02-28) -- "Trophy Case"
+#25 0.296 Copyright (C) 2025 The R Foundation for Statistical Computing
+#25 0.296 Platform: x86_64-pc-linux-gnu
+#25 0.296 
+#25 0.296 R is free software and comes with ABSOLUTELY NO WARRANTY.
+#25 0.296 You are welcome to redistribute it under certain conditions.
+#25 0.296 Type 'license()' or 'licence()' for distribution details.
+#25 0.296 
+#25 0.296   Natural language support but running in an English locale
+#25 0.296 
+#25 0.296 R is a collaborative project with many contributors.
+#25 0.296 Type 'contributors()' for more information and
+#25 0.296 'citation()' on how to cite R or R packages in publications.
+#25 0.296 
+#25 0.296 Type 'demo()' for some demos, 'help()' for on-line help, or
+#25 0.296 'help.start()' for an HTML browser interface to help.
+#25 0.296 Type 'q()' to quit R.
+#25 0.296 
+#25 0.374 > install.packages("BiocManager");my.packages <- read.delim("/tmp/packages.to.install_4.4.3_5.txt", header = FALSE)[, 1]; BiocManager::install(my.packages, update = FALSE, ask = FALSE)
+#25 0.377 Installing package into ‘/usr/local/lib/R/site-library’
+#25 0.377 (as ‘lib’ is unspecified)
+#25 2.680 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/BiocManager_1.30.27.tar.gz'
+#25 3.431 Content type 'binary/octet-stream' length 666468 bytes (650 KB)
+#25 3.431 ==================================================
+#25 3.493 downloaded 650 KB
+#25 3.493 
+#25 3.678 * installing *binary* package ‘BiocManager’ ...
+#25 3.683 * DONE (BiocManager)
+#25 3.689 
+#25 3.689 The downloaded source packages are in
+#25 3.689 	‘/tmp/Rtmpv6Sfju/downloaded_packages’
+#25 3.931 'getOption("repos")' replaces Bioconductor standard repositories, see
+#25 3.931 'help("repositories", package = "BiocManager")' for details.
+#25 3.931 Replacement repositories:
+#25 3.931     CRAN: https://p3m.dev/cran/__linux__/noble/latest
+#25 8.426 Bioconductor version 3.20 (BiocManager 1.30.27), R 4.4.3 (2025-02-28)
+#25 8.426 Installing package(s) 'ggthemes', 'ChIPseeker'
+#25 8.662 also installing the dependencies ‘plotrix’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’
+#25 8.662 
+#25 8.662 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/plotrix_3.8-14.tar.gz'
+#25 10.04 Content type 'binary/octet-stream' length 1161892 bytes (1.1 MB)
+#25 10.11 ==================================================
+#25 10.46 downloaded 1.1 MB
+#25 10.46 
+#25 10.46 trying URL 'https://bioconductor.org/packages/3.20/data/annotation/src/contrib/TxDb.Hsapiens.UCSC.hg19.knownGene_3.2.2.tar.gz'
+#25 11.09 Content type 'application/gzip' length 18669702 bytes (17.8 MB)
+#25 11.43 ==================================================
+#25 13.50 downloaded 17.8 MB
+#25 13.50 
+#25 13.51 trying URL 'https://p3m.dev/cran/__linux__/noble/latest/src/contrib/ggthemes_5.2.0.tar.gz'
+#25 14.79 Content type 'binary/octet-stream' length 970014 bytes (947 KB)
+#25 14.89 ==================================================
+#25 15.99 downloaded 947 KB
+#25 15.99 
+#25 15.99 trying URL 'https://bioconductor.org/packages/3.20/bioc/src/contrib/ChIPseeker_1.42.1.tar.gz'
+#25 16.53 Content type 'application/gzip' length 7594721 bytes (7.2 MB)
+#25 16.78 ==================================================
+#25 17.81 downloaded 7.2 MB
+#25 17.81 
+#25 18.03 * installing *binary* package ‘plotrix’ ...
+#25 18.04 * DONE (plotrix)
+#25 19.58 * installing *source* package ‘TxDb.Hsapiens.UCSC.hg19.knownGene’ ...
+#25 19.58 ** using staged installation
+#25 19.59 ** R
+#25 19.59 ** inst
+#25 19.61 ** byte-compile and prepare package for lazy loading
+#25 25.51 ** help
+#25 25.51 *** installing help indices
+#25 25.52 ** building package indices
+#25 25.70 ** testing if installed package can be loaded from temporary location
+#25 31.30 ** testing if installed package can be loaded from final location
+#25 37.12 ** testing if installed package keeps a record of temporary installation path
+#25 37.12 * DONE (TxDb.Hsapiens.UCSC.hg19.knownGene)
+#25 37.38 * installing *binary* package ‘ggthemes’ ...
+#25 37.38 * DONE (ggthemes)
+#25 37.88 * installing *source* package ‘ChIPseeker’ ...
+#25 37.90 ** package ‘ChIPseeker’ successfully unpacked and MD5 sums checked
+#25 37.90 ** using staged installation
+#25 37.92 ** R
+#25 37.93 ** data
+#25 37.94 ** inst
+#25 37.94 ** byte-compile and prepare package for lazy loading
+#25 46.54 ** help
+#25 46.62 *** installing help indices
+#25 46.68 ** building package indices
+#25 46.91 ** installing vignettes
+#25 46.92 ** testing if installed package can be loaded from temporary location
+#25 54.55 ** testing if installed package can be loaded from final location
+#25 61.71 ** testing if installed package keeps a record of temporary installation path
+#25 61.72 * DONE (ChIPseeker)
+#25 61.72 
+#25 61.72 The downloaded source packages are in
+#25 61.72 	‘/tmp/Rtmpv6Sfju/downloaded_packages’
+#25 61.72 > 
+#25 61.72 > 
+#25 DONE 61.8s
+
+#26 exporting to image
+#26 exporting layers
+#26 exporting layers 5.0s done
+#26 writing image sha256:10e4acc0f15fdcf65fc0d77041a1d268772fcaa7d5d9e4ebb16e83fddc03c517 done
+#26 naming to docker.io/library/verse_with_more_packages:4.4.3_5 done
+#26 DONE 5.1s
